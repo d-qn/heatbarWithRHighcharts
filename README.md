@@ -7,7 +7,7 @@ This document describes the procedure to create in interactive a heatmap-barchar
 
 This chart is fully created from R, by leveraging highcharts (javacript/d3 library) from R. It takes only about a dozen lines of R code to create such interactive chart. 
 
-If you are already proficient with d3 or Highcharts (not my case), there is probably not much to gain for you from this tutorial. 
+If you are already proficient with [d3](http://d3js.org) or Highcharts (not my case), there is probably not much to gain for you from this tutorial. 
 
 But if you know some bits of R and wishes to create such interactive chart, please read on :-)
 
@@ -39,6 +39,13 @@ The data file contains just 3 columns: the date of each vote, the % of yes and t
 One can usually easily create an interactive chart with oneliner in rCharts. 
 However to create a heatmap, the procedure is slighty more complicated as far as I know. It is
 
+Also please note that Highcharts is free for non-commercial usage. 
+
+
+### Credits
+* The procedure to create a heatmap from Rcharts comes from
+* RCharts
+* Highcharts
 
 
 
