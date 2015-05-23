@@ -1,4 +1,4 @@
-# Create an interactive heatmap-barchat with R/highcharts
+# Interactive heatmap-barchat with R/highcharts
 
 
 ## Introduction
@@ -27,11 +27,14 @@ So technically, this graphic is simply a heatmap coerced into a column chart. On
 
 You will need to have installed the R package [rCharts](http://rcharts.io), a wonderful wrapper for multiple javascript charting libraries. For that you need devtools installed. In R
 
-```r
+```R
 install.packages("devtools")
 require(devtools)
 install_github('rCharts', 'ramnathv')
 library(rCharts)
+```
+
+```
 # Load the data file
 data <- read.csv("citizenIniatives_ch.csv", stringsAsFactors = F)
 ```
