@@ -32,9 +32,7 @@ install.packages("devtools")
 require(devtools)
 install_github('rCharts', 'ramnathv')
 library(rCharts)
-```
 
-```
 # Load the data file
 data <- read.csv("citizenIniatives_ch.csv", stringsAsFactors = F)
 ```
