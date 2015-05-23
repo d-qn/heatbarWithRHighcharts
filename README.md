@@ -38,23 +38,32 @@ data <- read.csv("citizenIniatives_ch.csv", stringsAsFactors = F)
 ```
 
 
-
 ### Reshape the data
 
 The data file contains just 3 columns: the date of each vote, the % of yes and the title of the vote. To create a heatmap we will aggregate all the votes by year (x dimension) and count the number of votes each year (y dimension).
 
+```
+# Get only the year from each date (not an elegant solution here, better to use date)
+data$year <- as.numeric(substr(data$date,1, 4))
+
+# add the count of the observations (initiatives) per year. The count starts at 0 each year
+data <- do.call(rbind, by(data, data$year, function(dd) cbind(dd, n = as.numeric(0:(nrow(dd)-1)))))
+rownames(data) <- NULL
+```
 
 One can usually easily create an interactive chart with a oneliner in rCharts. 
 However to create a heatmap, the procedure is slighty more complicated since the current version of rCharts 0.4.5 does not include the heatmap extensions yet.
 
-The extra steps for a heatmap means that you need to have variables named: 'x', 'y' and 'value'. If you wish to have a text description for each of your data point, a variable 'name' is needed. Also, you can in rCharts just pass the 
-
-
+The extra steps for a heatmap means that you need to have variables named: 'x', 'y' and 'value'. If you wish to have a text description for each of your data point, a variable 'name' is needed.
 
 ```
 # change the names of the data.frame to be highcharts friendly
 colnames(data) <- c('date', 'name', 'value', 'x', 'y')
+```
 
+
+
+```
 # Create a new highchart instance
 a <- Highcharts$new()
 a$chart(zoomType = "xy", type = 'heatmap', width = 1000)
