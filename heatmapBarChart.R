@@ -19,9 +19,8 @@ colnames(data) <- c('date', 'name', 'value', 'x', 'y')
 
 ### PLOT
 a <- Highcharts$new()
-# use type='heatmap' for heat maps
 a$chart(zoomType = "xy", type = 'heatmap', width = 1000)
-# Pass the data.
+# Pass the data as JSON
 a$series(name = "", data =  rCharts::toJSONArray2(data, json = F, names = T))
 
 
@@ -29,6 +28,7 @@ a$series(name = "", data =  rCharts::toJSONArray2(data, json = F, names = T))
 a$addParams(colorAxis = list(min = 0, max = 100, stops = list(list(0, '#ab3d3f'), list(0.499, '#EED8D9'),list(0.5, '#ADC2C2'),list(1, '#336666'))))
 a$yAxis(lineWidth = 0, minorGridLineWidth = 0, lineColor = 'transparent', title = list(text = ""),
 	labels = list(enabled = FALSE), minorTickLength = 0, tickLength =  0, gridLineWidth =  0, minorGridLineWidth = 0)
+
 a$addAssets(js = c("https://code.highcharts.com/modules/heatmap.js"))
 a
 

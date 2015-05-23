@@ -46,16 +46,29 @@ The data file contains just 3 columns: the date of each vote, the % of yes and t
 
 One can usually easily create an interactive chart with a oneliner in rCharts. 
 However to create a heatmap, the procedure is slighty more complicated since the current version of rCharts 0.4.5 does not include the heatmap extensions yet.
-To produce a heatmap with highcharts you need to have the variables named 'x', 'y' and 'value'. If you wish to have a text description for each of your data point, a variable 'name'. 
+
+The extra steps for a heatmap means that you need to have variables named: 'x', 'y' and 'value'. If you wish to have a text description for each of your data point, a variable 'name' is needed. Also, you can in rCharts just pass the 
 
 
 
-Also a legal note about Highcharts, it is only free for non-commercial usage. Please refer to its [licence](http://www.highcharts.com/products/highcharts/#non-commercia) for commercial usage.
+```
+# change the names of the data.frame to be highcharts friendly
+colnames(data) <- c('date', 'name', 'value', 'x', 'y')
+
+# Create a new highchart instance
+a <- Highcharts$new()
+a$chart(zoomType = "xy", type = 'heatmap', width = 1000)
+# Pass the data as JSON 
+a$series(name = "", data =  rCharts::toJSONArray2(data, json = F, names = T))
+```
+
+
+Also a legal note about Highcharts, it is free for non-commercial usage. Please refer to its [licence](http://www.highcharts.com/products/highcharts/#non-commercia) for commercial usage.
 
 
 ### Credits
-* The procedure to create a heatmap from Rcharts comes from
-* RCharts
+* The workaround to create an interactive Highcharts heatmap in R with rCharts comes from [Stefan Wilhelm](http://stefan-wilhelm.net/interactive-highcharts-heat-maps-in-r-with-rcharts/)
+* The aweseome [rCharts](http://rcharts.io) by [Ramnath Vaidyanathan](https://github.com/ramnathv)
 * Highcharts
 
 
