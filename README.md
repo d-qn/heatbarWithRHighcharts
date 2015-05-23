@@ -31,7 +31,7 @@ You will need to have installed the R package [rCharts](http://rcharts.io), a wo
 install.package("devtools")
 install.package("rCharts")
 library(rCharts)
-```r
+```
 
 Load the data file
 
