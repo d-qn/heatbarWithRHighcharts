@@ -3,25 +3,24 @@
 
 ## Introduction
 
-This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"??) from R. A screenshot below, interactive examples of such graphic can be seen here:
-
+This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"?) from R. You can see screenshot under. The interactive examples of such graphic can be seen here.
 
 ![heatbar screenshot](heatbar_screenshot.png)
 
 This chart is fully created in R, leveraging [highcharts](http://www.highcharts.com) (javacript charting library) from R. It takes only about a dozen lines of R code to create such interactive chart. 
 
-If you are already proficient with javacript, such as with [d3](http://d3js.org) or [Highcharts](http://www.highcharts.com) (not my case), there is probably not much to gain for you from this tutorial. But if you mainly know R and wishes to create such an interactive chart, please read on :-)
+If you are already proficient with javascript, such as with [d3](http://d3js.org) or [Highcharts](http://www.highcharts.com) (not my case), there is probably not much to gain for you from this tutorial. But if you mainly know R and wishes to create such an interactive chart, please read on :-)
 
 ## About the graphic type
-The live example shows all Swiss people's initiatives, each square being a ballot colored based on the % of yes votes. So on one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each ballot being colored according to the % of yes. The interactivity with a tooltip showing the title of each ballot is a nice explorative feature.
+The live example shows all Swiss people's initiatives, each square being a ballot colored based on the % of yes votes. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each ballot being colored according to the % of yes. The interactivity with a tooltip showing the title of each ballot is a nice explorative feature.
 
-So technically, this graphic is simply a heatmap coerced into a column chart. One could achieve something similar with an interactive dot chart. 
+Technically, this graphic is a heatmap coerced into a column chart. One could achieve something similar with an interactive dot chart. 
 
 ## Create the chart
 
 ### Getting started
 
-You will need to have installed the R package [rCharts](http://rcharts.io), a wonderful wrapper for multiple javascript charting libraries. For that, you need devtools installed. In R:
+You will need to have installed the R package [rCharts](http://rcharts.io), a wonderful wrapper for numerious javascript charting libraries. For that, you need devtools installed. In R:
 
 ```R
 install.packages("devtools")
