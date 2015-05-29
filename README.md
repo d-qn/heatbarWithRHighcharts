@@ -6,7 +6,7 @@
 This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"??) from R. A screenshot below, interactive examples of such graphic can be seen here:
 
 
-![heatbar screenshot](https://github.com/d-qn/heatbarWithRHighcharts/heatbar_screenshot.png)
+![heatbar screenshot](heatbar_screenshot.png)
 
 This chart is fully created in R, leveraging [highcharts](http://www.highcharts.com) (javacript charting library) from R. It takes only about a dozen lines of R code to create such interactive chart. 
 
