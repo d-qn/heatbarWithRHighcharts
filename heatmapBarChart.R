@@ -32,7 +32,7 @@ a$yAxis(lineWidth = 0, minorGridLineWidth = 0, lineColor = 'transparent', title 
 a$addAssets(js = c("https://code.highcharts.com/modules/heatmap.js"))
 a
 
-
+# Define the tooltip to show the 'name' of each data point
 # formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' + this.point.x + ',</b> the initative:<br><i>' +
 # 	this.point.name + '</i>gathered <b>' + this.point.value + '%</b> of yes</div>'; } !#"
 
@@ -49,13 +49,6 @@ a
 
 
 
-
-
-
-
-
-		# rename data for highcharts
-		colnames(data) <- c('name', 'x', 'y', 'value')
 		# add HTML break for name longer than given threshold
 		data$name <- gsub('(.{1,50})(\\s|$)', '\\1\\<br\\>', data$name)
 
