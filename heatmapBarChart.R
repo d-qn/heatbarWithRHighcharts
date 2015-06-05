@@ -29,29 +29,11 @@ a$yAxis(lineWidth = 0, minorGridLineWidth = 0, lineColor = 'transparent', title 
 	labels = list(enabled = FALSE), minorTickLength = 0, tickLength =  0, gridLineWidth =  0, minorGridLineWidth = 0)
 
 a$addAssets(js = c("https://code.highcharts.com/modules/heatmap.js"))
-
-
-
-# Define the tooltip to show the 'name' of each data point
-# formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' + this.point.x + ',</b> the initative:<br><i>' +
-# 	this.point.name + '</i>gathered <b>' + this.point.value + '%</b> of yes</div>'; } !#"
-
-# formatter <- paste0("#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">",
-# 	trad[eval(paste("tp", "In", sep = ".")), lang], " <b>'+ this.point.x + ',</b> ", gsub("'", " ", trad[eval(paste("tp", typeShort, sep = ".")),lang]),
-# 	 ":<br><br><i>' + this.point.name + '</i><br>", trad[eval(paste("tp", "yield", sep = ".")),lang], " <b>' + this.point.value + '%</b> ",
-# 	  trad[eval(paste("tp", "ofyes", sep = ".")),lang], "</div>'; } !#")
-#
-# a$tooltip(formatter = formatter, useHTML = T, borderWidth = 2, backgroundColor = 'rgba(255,255,255,0.8)')
-
-
 a
 
-
-
-
-		# add HTML break for name longer than given threshold
-		data$name <- gsub('(.{1,50})(\\s|$)', '\\1\\<br\\>', data$name)
-
-
-
+# Customize the tooltip
+formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' +
+	this.point.x + ',</b> the initative:<br><br><i>' + this.point.name + '<br><br></i>gathered <b>' + this.point.value + '%</b> yes</div>'; } !#"
+a$tooltip(formatter = formatter, useHTML = T, borderWidth = 2, backgroundColor = 'rgba(255,255,255,0.8)')
+a
 

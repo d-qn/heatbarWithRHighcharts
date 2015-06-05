@@ -7,12 +7,12 @@ This document describes the procedure to create an interactive a heatmap-barchar
 
 ![heatbar screenshot](heatbar_screenshot.png)
 
-This chart is fully created in R, leveraging [highcharts](http://www.highcharts.com) (javacript charting library) from R. It takes only about a dozen lines of R code to create such interactive chart.
+This chart is fully created in R, leveraging [highcharts](http://www.highcharts.com) (a javacript charting library). It takes only about a dozen lines of R code to create such interactive chart.
 
 If you are already proficient with javascript, such as with [d3](http://d3js.org) or [Highcharts](http://www.highcharts.com) (not my case), there is probably not much to gain for you from this tutorial. But if you mainly know R and wishes to create such an interactive chart, please read on :-)
 
 ## About the graphic type
-The live example shows all Swiss people's initiatives, each square being a ballot colored based on the % of yes votes. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each ballot being colored according to the % of yes. The interactivity with a tooltip showing the title of each ballot is a nice explorative feature.
+The live example shows all Swiss people's initiatives, each square being a ballot colored based on the % of yes votes. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each vote being colored according to the % of yes. The interactivity with a tooltip showing the title of each ballot is a nice explorative feature.
 
 Technically, this graphic is a heatmap coerced into a column chart. One could achieve something similar with an interactive dot chart.
 
@@ -90,17 +90,25 @@ a
 ```
 
 ### Customize the tooltip
+At this point, you might notice that the tooltip shows the series name, the x and y values. This is not really helpful because we only have one serie here and we wish to have the vote name displayed instead. We can customize the tooltip by defining a formatter callback, returning HTML.
+
+```
+formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' +
+	this.point.x + ',</b> the initative:<br><br><i>' + this.point.name + '<br><br></i>gathered <b>' + this.point.value + '%</b> yes</div>'; } !#"
+a$tooltip(formatter = formatter, useHTML = T, borderWidth = 2, backgroundColor = 'rgba(255,255,255,0.8)')
+a
+```
+
+## Remarks
+Highcharts offers heaps of options. Check its documentation if you wish to do more: http://api.highcharts.com/highcharts
+
+A legal note about Highcharts, it is open-source but free only for non-commercial usage. Please refer to its [licence](http://www.highcharts.com/products/highcharts/#non-commercia) for commercial usage.
 
 
-
-
-Also a legal note about Highcharts, it is open-source but free only for non-commercial usage. Please refer to its [licence](http://www.highcharts.com/products/highcharts/#non-commercia) for commercial usage.
-
-
-### Credits
+## Credits
 * The workaround to create an Highcharts heatmap in R comes from [Stefan Wilhelm](http://stefan-wilhelm.net/interactive-highcharts-heat-maps-in-r-with-rcharts/)
 * The aweseome [rCharts](http://rcharts.io) by [Ramnath Vaidyanathan](https://github.com/ramnathv)
-* Highcharts
+* [Highcharts](http://www.highcharts.com)
 
 
 
