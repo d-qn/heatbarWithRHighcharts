@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"?) from R. You can a see screenshot under. The interactive examples of such graphic can be seen here:
+This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"?) from R. You can a see screenshot under. The interactive examples of such graphic is available here: XXXXX
 
 ![heatbar screenshot](heatbar_screenshot.png)
 
@@ -12,7 +12,7 @@ This chart is fully created in R, leveraging [highcharts](http://www.highcharts.
 If you are already proficient with javascript, such as with [d3](http://d3js.org) or [Highcharts](http://www.highcharts.com) (not my case), there is probably not much to gain for you from this tutorial. But if you mainly know R and wishes to create such an interactive chart, please read on :-)
 
 ## About the graphic type
-The live example shows all Swiss people's initiatives, each square being a ballot coloured based on the % of yes votes. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each vote being coloured according to the % of yes. The interactivity with a tooltip showing the title of each ballot is a nice explorative feature.
+The live example shows all Swiss people's initiatives, each square being a ballot. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each vote coloured according to the % of yes vote. The interactivity with a tooltip showing the title of each vote is a nice explorative feature.
 
 Technically, this graphic is a heatmap coerced into a column chart. One could achieve something similar with an interactive dot chart.
 
@@ -73,30 +73,32 @@ a$addParams(colorAxis = list(min = 0, max = 100, stops = list(list(0, '#ab3d3f')
 	list(0.499, '#EED8D9'),list(0.5, '#ADC2C2'),list(1, '#336666'))))
 ```
 
-Some aesthetic tweaks to get rid of y axis' grid lines, ticks and labels
+Some aesthetic tweaks to get rid of y-axis' grid lines, ticks and labels
 ```
 a$yAxis(lineWidth = 0, minorGridLineWidth = 0, lineColor = 'transparent', title = list(text = ""),
 	labels = list(enabled = FALSE), minorTickLength = 0, tickLength =  0, gridLineWidth =  0, minorGridLineWidth = 0)
 ```
 
-One finally needs to the heatmap javaScript library currently not in rCharts
+One finally needs to add the heatmap javaScript library not yet shipped with rCharts
 ```
 a$addAssets(js = c("https://code.highcharts.com/modules/heatmap.js"))
 ```
 
-And we are done. We can preview the heatmap-barchart in a browser, by simply calling our chart in R:
+And we are done! We can preview the heatmap-barchart in a browser, by simply calling our chart in R:
 ```
 a
 ```
 
 ### Customise the tooltip
-At this point, you might notice that the tooltip shows the series name, the x and y values. This is not really helpful because we only have one serie here and we wish to have the vote name displayed instead. We can customise the tooltip by defining a formatter callback, returning HTML.
+At this point, you might notice that the tooltip shows the series name, the x and y values. This is not really helpful because we only have one series here and we wish to have the vote name displayed instead. We can customise the tooltip by defining a formatter callback, returning HTML.
 
 ```
 formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' +
 	this.point.x + ',</b> the initiative:<br><br><i>' + this.point.name + '<br><br></i>gathered <b>' + this.point.value + '%</b> yes</div>'; } !#"
 a$tooltip(formatter = formatter, useHTML = T, borderWidth = 2, backgroundColor = 'rgba(255,255,255,0.8)')
 a
+# Finally, to save the interactive chart
+a$save("heatmapBarChart.html")
 ```
 
 ## Remarks

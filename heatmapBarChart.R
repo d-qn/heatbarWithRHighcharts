@@ -29,7 +29,6 @@ a$yAxis(lineWidth = 0, minorGridLineWidth = 0, lineColor = 'transparent', title 
 	labels = list(enabled = FALSE), minorTickLength = 0, tickLength =  0, gridLineWidth =  0, minorGridLineWidth = 0)
 
 a$addAssets(js = c("https://code.highcharts.com/modules/heatmap.js"))
-a
 
 # Customize the tooltip
 formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#686868;font-size:0.8em\">In <b>' +
@@ -37,3 +36,5 @@ formatter <- "#! function() { return '<div class=\"tooltip\" style=\"color:#6868
 a$tooltip(formatter = formatter, useHTML = T, borderWidth = 2, backgroundColor = 'rgba(255,255,255,0.8)')
 a
 
+# Save the chart as HTML
+a$save("heatmapBarChart.html")
