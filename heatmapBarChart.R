@@ -1,6 +1,6 @@
 install.packages("devtools")
 require(devtools)
-install_github('rCharts', 'ramnathv')
+install_github("ramnathv/rCharts")
 library(rCharts)
 
 # Load the data file
@@ -20,7 +20,7 @@ colnames(data) <- c('date', 'name', 'value', 'x', 'y')
 a <- Highcharts$new()
 a$chart(zoomType = "x", type = 'heatmap', width = 1000)
 # Pass the data as JSON
-a$series(name = "", data =  rCharts::toJSONArray2(data, json = F, names = T))
+a$series(name = "", data = rCharts::toJSONArray2(data, json = F, names = T))
 
 # Define the color scale
 a$addParams(colorAxis = list(min = 0, max = 100, stops = list(list(0, '#ab3d3f'),
