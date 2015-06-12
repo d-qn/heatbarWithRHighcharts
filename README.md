@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"?) from R. You can a see screenshot under. The interactive examples of such graphic is available here: XXXXX
+This document describes the procedure to create an interactive a heatmap-barchart ("heatbar"?) from R. You can a see screenshot under. The interactive examples of such graphic is available [here](http://www.swissinfo.ch/eng/explore-600-national-votes_how-direct-democracy-has-grown-over-the-decades/41481992)
 
 ![heatbar screenshot](heatbar_screenshot.png)
 
@@ -12,7 +12,7 @@ This chart is fully created in R, leveraging [highcharts](http://www.highcharts.
 If you are already proficient with javascript, such as with [d3](http://d3js.org) or [Highcharts](http://www.highcharts.com) (not my case), there is probably not much to gain for you from this tutorial. But if you mainly know R and wishes to create such an interactive chart, please read on :-)
 
 ## About the graphic type
-The live example shows all Swiss people's initiatives, each square being a ballot. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each vote coloured according to the % of yes vote. The interactivity with a tooltip showing the title of each vote is a nice explorative feature.
+The [live example](http://www.swissinfo.ch/eng/explore-600-national-votes_how-direct-democracy-has-grown-over-the-decades/41481992) shows all Swiss people's initiatives, each square being a ballot. On one hand, it is a bar/column chart showing the number of ballots over the years. On the other hand, it is a heatmap with each vote coloured according to the % of yes vote. The interactivity with a tooltip showing the title of each vote is a nice explorative feature.
 
 Technically, this graphic is a heatmap coerced into a column chart. One could achieve something similar with an interactive dot chart.
 
